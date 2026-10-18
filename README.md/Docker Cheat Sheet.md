@@ -225,32 +225,40 @@
 1. **Tag an Image**:
 
    ```bash
+   docker container --help
+   docker  --help
+
+   ```
+
+1. **Tag an Image**:
+
+   ```bash
    docker tag <image-id> <new-image-name>:<tag>
 
    ```
 
-2. **Push an Image to Docker Hub**:
+1. **Push an Image to Docker Hub**:
 
    ```bash
    docker push <image-name>:<tag>
 
    ```
 
-3. **Save an Image to a Tar File**:
+1. **Save an Image to a Tar File**:
 
    ```bash
    docker save -o <path-to-output-file> <image-name>
 
    ```
 
-4. **Load an Image from a Tar File**:
+1. **Load an Image from a Tar File**:
 
    ```bash
    docker load -i <path-to-input-file>
 
    ```
 
-5. **Docker Compose**:
+1. **Docker Compose**:
    - **Start Services**:
 
      ```bash
@@ -265,14 +273,14 @@
 
      ```
 
-6. **Scale Services**:
+1. **Scale Services**:
 
    ```bash
    docker-compose up --scale <service-name>=<number>
 
    ```
 
-7. **View Running Docker Compose Services**:
+1. **View Running Docker Compose Services**:
 
    ```bash
    docker-compose ps
