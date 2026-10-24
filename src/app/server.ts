@@ -1,6 +1,6 @@
 import { Server } from "http";
 import app from "./app";
-import { errorlogger, logger } from "./app/src/shared/logger";
+import { errorlogger, logger } from "../shared/logger";
 
 let server: Server;
 

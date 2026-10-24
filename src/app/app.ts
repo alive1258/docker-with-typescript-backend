@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import path from "path";
-import { LogsRoutes } from "./app/src/modules/Logs/logs.routes";
-import { errorlogger } from "./app/src/shared/logger";
+import { LogsRoutes } from "../modules/Logs/logs.routes";
+import { errorlogger } from "../shared/logger";
 
 const app: Application = express();
 
