@@ -2,6 +2,8 @@
 
 এই লেসনে আমরা Docker-এর দুটি গুরুত্বপূর্ণ বিষয় বিস্তারিত শিখব:
 
+docker run -p 5000:5000 --name ts-conatiner --rm -v ts-docker-logs:app/logs ts-docker:v2
+
 1. Named Volumes — নির্দিষ্ট নাম দিয়ে Docker Volume তৈরি ও ব্যবহার করা।
 2. Removing Anonymous Volumes — প্রয়োজন শেষ হলে Anonymous Volume নিরাপদে সরানো।
    তোমার docker-with-typescript-backend প্রজেক্টের কথা মাথায় রেখে আমরা practical command দিয়ে বিষয়গুলো বুঝব।
