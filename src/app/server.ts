@@ -1,21 +1,23 @@
-import "dotenv/config";
-
 import { Server } from "http";
+import mongoose from "mongoose";
 import app from "./app";
-import { errorlogger, logger } from "../shared/logger";
+import config from "./app/config";
+import { errorlogger, logger } from "./app/src/shared/logger";
 
 let server: Server;
 
 async function main() {
   try {
-    const PORT = Number(process.env.PORT) || 5000;
+    await mongoose.connect(config.database_url as string);
 
-    server = app.listen(PORT, () => {
-      console.log(`App is listening on port ${PORT}`);
-      logger.info(`App is listening on port ${PORT}`);
+    logger.info("Connected to database");
+
+    server = app.listen(process.env.PORT, () => {
+      console.log(`app is listening on port ${process.env.PORT}`);
+      logger.info(`app is listening on port ${process.env.PORT}`);
     });
   } catch (err) {
-    console.error(err);
+    console.log(err);
     errorlogger.error(err);
   }
 }
@@ -23,18 +25,18 @@ async function main() {
 main();
 
 process.on("unhandledRejection", (err) => {
-  console.error("Unhandled rejection detected. Shutting down...", err);
+  console.log(`😈 unahandledRejection is detected , shutting down ...`, err);
   errorlogger.error(err);
-
   if (server) {
-    server.close(() => process.exit(1));
-  } else {
-    process.exit(1);
+    server.close(() => {
+      process.exit(1);
+    });
   }
+  process.exit(1);
 });
 
-process.on("uncaughtException", (err) => {
-  console.error("Uncaught exception detected. Shutting down...", err);
-  errorlogger.error(err);
+process.on("uncaughtException", () => {
+  console.log(`😈 uncaughtException is detected , shutting down ...`);
+  errorlogger.error("uncaughtException is detected");
   process.exit(1);
 });
